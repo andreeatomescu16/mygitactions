@@ -1,5 +1,9 @@
 def hello():
-    print("Hello")
+    print("hi")
 
-if __name__ == "__main__":
-    hello()
+
+def bye():
+    print("bye")
+
+
+print(hello())
