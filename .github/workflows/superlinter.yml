@@ -27,4 +27,4 @@ jobs:
 
       - name: Run Push Event Script
         run: |
-          python process_push.py
+          python main.py
