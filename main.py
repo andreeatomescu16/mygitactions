@@ -1,9 +1,5 @@
 def hello():
-    print("hi")
-
-
-def bye():
-    print("bye")
+    print("someone pushed to the repo")
 
 
 print(hello())
