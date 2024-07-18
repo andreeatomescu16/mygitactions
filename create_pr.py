@@ -17,13 +17,11 @@ g = Github(GITHUB_TOKEN)
 repo = g.get_repo(REPO_NAME)
 
 def get_latest_commit_branch():
-    # Get the latest commit on the default branch (main)
     default_branch = repo.default_branch
     commits = repo.get_commits(sha=default_branch)
     latest_commit = commits[0]
     latest_commit_sha = latest_commit.sha
 
-    # Find the branch name from the latest commit
     branches = repo.get_branches()
     for branch in branches:
         branch_commits = repo.get_commits(sha=branch.name)
