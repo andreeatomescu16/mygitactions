@@ -11,9 +11,6 @@ load_dotenv()
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 REPO_NAME = os.getenv('GITHUB_REPOSITORY')
 
-if not GITHUB_TOKEN or not REPO_NAME:
-    raise ValueError("Lipsesc variabilele de mediu GITHUB_TOKEN sau GITHUB_REPOSITORY")
-
 # Inițializează clientul GitHub
 g = Github(GITHUB_TOKEN)
 repo = g.get_repo(REPO_NAME)
