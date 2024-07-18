@@ -1,4 +1,6 @@
 import os
+import subprocess
+import time
 from github import Github
 from dotenv import load_dotenv
 
@@ -17,19 +19,15 @@ g = Github(GITHUB_TOKEN)
 repo = g.get_repo(REPO_NAME)
 
 def get_latest_commit_branch():
-<<<<<<< HEAD
     latest_commit_sha = None
     latest_commit_date = None
     latest_commit_branch = None
-
-    # Get the latest commit from all branches
-=======
+    
     default_branch = repo.default_branch
     commits = repo.get_commits(sha=default_branch)
     latest_commit = commits[0]
     latest_commit_sha = latest_commit.sha
 
->>>>>>> 966a975e97e8577184322cb2a4c938ea8d527935
     branches = repo.get_branches()
     for branch in branches:
         commits = repo.get_commits(sha=branch.name)
@@ -41,6 +39,11 @@ def get_latest_commit_branch():
                 latest_commit_branch = branch.name
 
     return latest_commit_branch
+
+def get_last_two_commits(branch):
+    # Get the hashes of the last two commits
+    log = subprocess.check_output(['git', 'log', '--format=%H', branch, '-n', '2']).decode().split()
+    return log[0], log[1]
 
 def create_and_merge_pull_request():
     base = repo.default_branch
