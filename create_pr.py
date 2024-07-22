@@ -4,12 +4,9 @@ import time
 from github import Github
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
-
 # Get environment variables
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
-REPO_NAME = os.getenv("GITHUB_REPOSITORY")
+GITHUB_TOKEN = os.getenv("MY_GITHUB_TOKEN")
+REPO_NAME = "andreeatomescu16/mygitactions"
 
 if not GITHUB_TOKEN or not REPO_NAME:
     raise ValueError("Missing GITHUB_TOKEN or GITHUB_REPOSITORY environment variable")
